@@ -9,20 +9,23 @@ const append = ((data) => {
     let image = document.createElement("img");
     image.src = data.image;
     let name = document.createElement("h2")
+    name.setAttribute("class","style1")
     name.innerText = data.name;
     let price = document.createElement("p")
     price.innerText = `Price: ${data.price}`;
-    // price.attributes("class", "linebrk")
+    price.setAttribute("class","style1")
     let div_star = document.createElement("div")
+    div_star.setAttribute("class","style1")
     for (let i = 0; i < data.star; i++) {
         let star = document.createElement("i")
         star.setAttribute("class", "fa-solid fa-star")
         div_star.append(star)
     }
     let ship = document.createElement("p");
-    ship.innerText = data.shipping;
+    ship.setAttribute("class","style1")
     let btn = document.createElement("button")
     btn.innerText = "Add To Cart"
+    btn.setAttribute("class", "style1")
     btn.onclick = () => {
         cartArr.push(data)
         localStorage.setItem("addcart", JSON.stringify(cartArr))
