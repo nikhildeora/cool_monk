@@ -1,5 +1,4 @@
-
-
+// nikhil javascript part 
 // div14 js 
 
 let div14_data = [
