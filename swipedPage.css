@@ -64,6 +64,18 @@ h3{
     width: 100%;
     text-align: center;
     }
-
-
+    #left{
+        width: 80%;
+        justify-content: center;
+    }
+    #left img{
+        width: 70%;
+        margin : auto;
+    }
+    #reviews{
+        width:100%;
+    }
+    #faq{
+        width:100%
+    }
 }
