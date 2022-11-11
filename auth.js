@@ -11,7 +11,7 @@ class User {
         let isValidated = this.validateUsername(u) && this.validatePassword(p);
         if (isValidated) {
             this.name = n;
-            this.email = e;
+             this.email = e;
             this.username = u;
             this.password = p;
             this.mobile = m;
@@ -23,7 +23,7 @@ class User {
                 method: 'POST',
                 body: JSON.stringify(this),
                 headers: {
-                    'content-Type': 'application/json'
+                    'Content-Type': 'application/json'
                 },
             });
             const data = await response.json();
@@ -41,17 +41,17 @@ class User {
             method: 'POST',
             body: JSON.stringify(login_data),
             headers: {
-                'content-Type': 'application/json',
+                'Content-Type': 'application/json',
             },
         });
         const data = await response.json()
         console.log('data', data)
         return data;
     } 
-}
+}  
 let user = new User()
 const Register = () => {
-    const reg_form = document.getElementById('register-form')
+    const reg_form = document.getElementById('reg_form')
     const name = reg_form.name.value;
     const email = reg_form.email.value;
     const username = reg_form.username.value;
@@ -70,9 +70,9 @@ const Login = async() => {
 
     getProfile(username, token)
     console.log('token: ', token)
-    // alert("Login Successful")
+    alert("Login Successful")
     // document.getElementById("profilename").innerText=username.name;
-    // console.log("done")
+    console.log("done")
 }
 const getProfile = async (username, token) => {
     let api_link = `https://masai-api-mocker.herokuapp.com/user/${username}`
