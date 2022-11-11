@@ -14,19 +14,18 @@
             height: auto;
             margin: auto;
             padding: 10px;
-            color: black;
+            /* color: black; */
         }
         #login{
             width: 60%;
             display: grid;
             margin: center;
             margin-top: 50px;
-            /* padding-top: 60px; */
             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
             border-radius: 15px;
             border: 2px solid rgb(215, 215, 233);
-            
-            background-color: teal;
+            background-color: #545871;
+            color: white;
         }
     
         
@@ -54,27 +53,32 @@
     let form= document.querySelector("form")
     form.addEventListener("submit", myfun);
     
-    let loginItem= JSON.parse(localStorage.getItem("signup"))||[]
-
-    function myfun(event) {
-        event.preventDefault();
-        let useremail= document.querySelector("#em").value
-        let userpwd= document.querySelector("#p").value
-        
-
-        console.log("userEmail",useremail,"UserPassword",userpwd)
+    // let loginItem= JSON.parse(localStorage.getItem("signup"))||[]
+    async function check(useremail, userpwd){
+        let res= await fetch(`https://powerful-savannah-17761.herokuapp.com/details`)
+        let data=await res.json()
+       
+        console.log(data)
         let flag = false;
-        loginItem.forEach(function(el){
+        data.forEach(function(el){
 
-        if((el.email==useremail) && (el.pwd==userpwd))
+        if((el.email==useremail) && (el.password==userpwd))
         flag=true
        })
 
        if (flag){
         alert("Login Successful");
+        window.location.href="index.html"
        } else {
         alert("Please fill the valid details");
        }
+    }
+    function myfun(event) {
+        event.preventDefault();
+        let useremail= document.querySelector("#em").value
+        let userpwd= document.querySelector("#p").value
+        check(useremail, userpwd)
+        console.log("userEmail",useremail,"UserPassword",userpwd)
     }
     let state=false;
     function toggle(){

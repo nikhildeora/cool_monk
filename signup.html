@@ -13,15 +13,12 @@
             height: auto;
             margin: auto;
             padding: 10px;
-            color: rgb(59, 58, 58);
             /* text-align: center; */
         }
         #signup{
             width: 60%;
             display: grid;
-            /* grid-template-columns: 1fr; */
-            /* justify-content: center; */
-            color: black;
+            color: white;
             margin-top: 50px;
             text-align: left;
             padding-top: 10px;
@@ -30,7 +27,7 @@
             border-radius: 15px;
             border: 2px solid rgb(215, 215, 233);
             
-            background-color: rgb(235, 225, 97);
+            background-color: #545871;
         }
     </style>
 </head>
@@ -39,9 +36,9 @@
     <form action="" id="signup">
         <div style="text-align: center">Sign Up</div>
         <label for="">Full Name</label> 
-        <input id="name" type="text" placeholder="Ente your full name">
+        <input id="name" type="text" placeholder="Ente your full name" required>
         <label for="">Email</label>
-        <input id="email" type="text" placeholder="Email">
+        <input id="email" type="text" placeholder="Email" required>
         <label for="">Password</label> 
         <input id="pwd" type="password" placeholder="Password"><span><i class="fa-solid fa-eye" id="eye" onclick="toggle()"></i></span>
         <button>SIGN UP</button> 
@@ -58,13 +55,27 @@
     function store(event){
         event.preventDefault()
         let obj={
-         name :document.querySelector("#name").value,
+         username :document.querySelector("#name").value,
          email: document.querySelector("#email").value,
-         pwd: document.querySelector("#pwd").value,
+         password: document.querySelector("#pwd").value,
         }
-        signupArr.push(obj)
-        console.log(signupArr)
-        localStorage.setItem("signup" , JSON.stringify(signupArr));
+        storeData(obj)
+    }
+    async function storeData(details){
+       try{
+        let res= await fetch (`https://powerful-savannah-17761.herokuapp.com/details`,{
+            method: 'POST',
+            body: JSON.stringify(details),
+            headers: {
+                'Content-Type': 'application/json'
+            }           
+        })
+        let data= await res.json()
+        console.log(data)
+        window.location.href="loginpage.html"
+    }catch(err){
+        console.log(err)
+    }
     }
     let state=false;
     function toggle(){
