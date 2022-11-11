@@ -41,7 +41,7 @@
 
         }
         #paymentform input[type="text"]{
-            width: 100%;
+            width: 90%;
             padding: 0.5rem 0.7rem;
             margin: 0.5rem 0;
             outline: none;
@@ -80,6 +80,32 @@
             cursor: pointer;
 
         }
+        @media all and (min-width:320px) and (max-width:1100px){
+            .left{
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+            }
+            #zip{
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+            }
+            #zip input{
+                margin-top: 5px;
+                width: 100%;
+            }
+            #zip select{
+                margin-bottom: 5px;
+            }
+
+            .left button{
+                text-align: center;
+                margin-left: 30%;
+            }
+
+
+        }
 
 
         
@@ -90,7 +116,8 @@
         <div class="pay-container" >
             <div class="left">
                 <h3>BILLING ADDRESS</h3>
-                <form id="paymentform" action="">Full name
+                <span id="paymentform" action="">
+                    Full name
                     <input type="text" name="" placeholder="Enter name">
                     Email
                     <input type="text" name="" placeholder="Enter email">
@@ -128,15 +155,16 @@
                         
                         
                     </div>
-                    <button>Submit</button>
+                    <button id="details-submit">Submit</button>
                     
                     
                     
 
-                </form>
+                </span>
             </div>
             
         </div>
     </header>
 </body>
 </html>
+<script src="./address.js"></script>
